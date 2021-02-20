@@ -1,0 +1,34 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: d3hc3n0k6h4c34
+  #database: prueba
+  #host: <%= ENV.fetch('DB_HOST', 'localhost') %>
+  host: ec2-54-144-251-233.compute-1.amazonaws.com
+  #username: maoknox
+  username: yqcufdkpzikwvm
+  password: ed59f400adb984be247dd2585201aaa1fc558d7a4aafdcaa38b874207f7cea35
+  #password: Nevulos$
+  port: <%= ENV.fetch('DB_PORT', '5432') %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+
+
+production:
+  <<: *default
+  database: db/production.sqlite3
